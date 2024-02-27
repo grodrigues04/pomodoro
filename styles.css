@@ -20,8 +20,8 @@ section{
     border-style:solid;
     border-width: 5px;
     border-color: #000000;
-    width: 500px;
-    height: 500px;
+    width: 620px;
+    height: 620px;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -39,12 +39,12 @@ section{
     border-width: 3px;
     border-color: #000000;
     text-align: center;
-    gap: 16px;
-    width: 350px;
-    height: 210px;
+    gap: 30px;
+    width: 400px;
+    height: 310px;
 }
 .session{
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 400;
 }
 
@@ -52,7 +52,7 @@ section{
     font-family: "Roboto Mono", monospace;
     font-optical-sizing: auto;
     font-weight: 600;
-    font-size: 70px;
+    font-size: 83px;
     font-style: normal;
 }
 .button{
@@ -67,9 +67,13 @@ section{
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
+    transition: 0.5s;
 }
-
-.config-timer-container{
+.button:hover{
+    color: #5c5959;
+    border-color:#C36868;
+}
+.config-container{
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -89,7 +93,7 @@ section{
     gap:7px;
 }
 
-.config-break-container{
+.config-focus-time-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,14 +103,16 @@ section{
     font-size: 31px;
     gap: 15px;
 }
-.decrease-timer{
+.decrease-timer, .increase-timer{
     color:#FFFFFF ;
+    transition: font-size 0.3s;
+}
+.decrease-timer:hover,.increase-timer:hover {
+    font-size: 35px;
+    color: antiquewhite;
 }
 .total-timer{
     color: #000000;
-}
-.increase-timer{
-    color:#FFFFFF ;
 }
 
 .time-section{
