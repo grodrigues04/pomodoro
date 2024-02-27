@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+body{
+    background-color: #C36868;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+section{
+    display: flex;
+    width:100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+}
+
+.main-container{
+    background-color: #B3BCBB;
+    border-radius:20px ;
+    border-style:solid;
+    border-width: 5px;
+    border-color: #000000;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.time-display-container{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 24px;
+    border-style:solid;
+    border-width: 3px;
+    border-color: #000000;
+    text-align: center;
+    gap: 16px;
+    width: 350px;
+    height: 210px;
+}
+.session{
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.time-display{
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: 70px;
+    font-style: normal;
+}
+.button{
+    background-color: #FFFFFF;
+    height: 50px;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 12px;
+    border-width: 1px;
+    font-size: 25px;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.config-timer-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.button-time-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    background-color: #323232;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 12px;
+    border-width: 2px;
+    width: 150px;
+    height: 100px;
+    gap:7px;
+}
+
+.config-break-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #99BCC0;
+    height: 65px;
+    width: 130px;
+    font-size: 31px;
+    gap: 15px;
+}
+.decrease-timer{
+    color:#FFFFFF ;
+}
+.total-timer{
+    color: #000000;
+}
+.increase-timer{
+    color:#FFFFFF ;
+}
+
+.time-section{
+    color: #FFFFFF;
+}
