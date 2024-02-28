@@ -12,16 +12,14 @@ let timeText = Number(timeDisplay.textContent);
 let intervalID = null;
 
 
-console.log(timeDisplay)
 buttonStart.addEventListener('click',function(){
-    console.log('fui clicado')
     if(!intervalID){
         minuts.innerHTML = `${UserSelectTotalTIme()-1}`
         minutsNumber = (UserSelectTotalTIme())
-        seconds.innerHTML = 59
-        secondsNumber = 59
+        seconds.innerHTML = 12 //colocar 59 depois
+        secondsNumber = 12
         intervalID = setInterval(updateTime,1000);
-        console.log(intervalID)
+
 }})
 for(let i=0; i<breakTimeDiv.length;i++){
     increaseNumber = breakTimeDiv[i].querySelector('.increase-timer')
@@ -54,15 +52,27 @@ function UserSelectTotalTIme(){ //function to always take the update time select
     return totalTime = Number(document.querySelector('.timerSection').textContent);
 }
 
+function fixTimeMinorTen(section, timeRemaning){
+    const totalTime = '0'+timeRemaning;
+    section.innerHTML = totalTime;
+}
 function updateTime(){
     let secondsRemaing = Number(seconds.textContent);
+    console.log(secondsRemaing)
     let minutsRemaing = Number(minuts.textContent);
     if(secondsRemaing!== 0){
-        seconds.innerHTML = secondsRemaing-1
+        if(secondsRemaing <= 10){
+            fixTimeMinorTen(seconds,(secondsRemaing-1))
+        }else{
+            seconds.innerHTML = secondsRemaing-1
+        }
     }
     else{
-        minuts.innerHTML = minutsRemaing-1;
+        if(minutsRemaing <= 10){
+            fixTimeMinorTen(minuts,(minutsRemaing-1))
+        }
         seconds.innerHTML = 59;
         secondsRemaing = 59;
-    }
+        }
 }
+
