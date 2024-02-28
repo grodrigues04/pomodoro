@@ -10,21 +10,22 @@ let dot = (timeDisplay.querySelector('.dot').textContent);
 let increaseSeconds = -1
 let timeText = Number(timeDisplay.textContent);
 let intervalID = null;
-let standardTime = 59
+
 
 buttonStart.addEventListener('click',function(){
     if(!intervalID){
+        [secondsRemaing,minutsRemaing] = timeRemaning();
         buttonStart.textContent = 'Pause';
         minuts.innerHTML = `${UserSelectTotalTIme()-1}`;
         minutsNumber = (UserSelectTotalTIme());
-        seconds.innerHTML = standardTime ;
-        secondsNumber = standardTime;
-        intervalID = setInterval(updateTime,1000);
+        seconds.innerHTML = secondsRemaing?secondsRemaing:59;
+        secondsNumber = secondsRemaing?secondsRemaing:59;
+        intervalID = setInterval(updateTime,1000); //se não, usa a fun                     
     }
     else{
-        
         clearInterval(intervalID)
         intervalID = null;
+        buttonStart.textContent = 'Start';
     }
 
 })
