@@ -10,17 +10,24 @@ let dot = (timeDisplay.querySelector('.dot').textContent);
 let increaseSeconds = -1
 let timeText = Number(timeDisplay.textContent);
 let intervalID = null;
-
+let standardTime = 59
 
 buttonStart.addEventListener('click',function(){
     if(!intervalID){
-        minuts.innerHTML = `${UserSelectTotalTIme()-1}`
-        minutsNumber = (UserSelectTotalTIme())
-        seconds.innerHTML = 12 //colocar 59 depois
-        secondsNumber = 12
+        buttonStart.textContent = 'Pause';
+        minuts.innerHTML = `${UserSelectTotalTIme()-1}`;
+        minutsNumber = (UserSelectTotalTIme());
+        seconds.innerHTML = standardTime ;
+        secondsNumber = standardTime;
         intervalID = setInterval(updateTime,1000);
+    }
+    else{
+        
+        clearInterval(intervalID)
+        intervalID = null;
+    }
 
-}})
+})
 for(let i=0; i<breakTimeDiv.length;i++){
     increaseNumber = breakTimeDiv[i].querySelector('.increase-timer')
     decreaseNumber = breakTimeDiv[i].querySelector('.decrease-timer')
@@ -30,6 +37,9 @@ for(let i=0; i<breakTimeDiv.length;i++){
     decreaseNumber.addEventListener('click',function(e){
         decrease(e.target.parentNode)
     });
+}
+
+if(intervalID){
 }
 
 function increase(e){
@@ -56,10 +66,16 @@ function fixTimeMinorTen(section, timeRemaning){
     const totalTime = '0'+timeRemaning;
     section.innerHTML = totalTime;
 }
-function updateTime(){
+
+function timeRemaning(){
     let secondsRemaing = Number(seconds.textContent);
-    console.log(secondsRemaing)
     let minutsRemaing = Number(minuts.textContent);
+    return [secondsRemaing, minutsRemaing];
+}
+
+function updateTime(){
+    [secondsRemaing,minutsRemaing] = timeRemaning();
+    console.log(secondsRemaing, minutsRemaing)
     if(secondsRemaing!== 0){
         if(secondsRemaing <= 10){
             fixTimeMinorTen(seconds,(secondsRemaing-1))
