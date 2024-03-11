@@ -116,12 +116,16 @@ function updateTime(){ //da pra transformar tudo isso aqui em varias funções s
         secondsRemaing = 59;
         }
 }
-
+let stopId = null;
 function stop(){
-    setInterval(function(){
+    stopId = setInterval(function(){
         let color = timeDisplay.style.color;
         timeDisplay.style.color = color == "red" ? "blue":"red";
-    },5000);
-    timeDisplay.style.color = "black";
+    },1000);
+    setTimeout(function(){
+        console.log('parando o pisca pisca')
+        clearInterval(stopId);
+        timeDisplay.style.color = 'black'
+    },5000)
     
 }
