@@ -1,3 +1,4 @@
+let currentSession = document.querySelector('.session')
 let breakTimeDiv = document.querySelectorAll('.config-focus-time-container');
 let buttonStart = document.querySelector('.start');
 let buttonReset = document.querySelector('.reset');
@@ -13,7 +14,7 @@ let intervalID = null;
 let stopID = null;
 
 
-buttonStart.addEventListener('click',function(){
+buttonStart.addEventListener('click',function teste(){
     if(!intervalID){
         minuts.innerHTML = `${UserSelectTotalTIme()-1}`;
         minutsNumber = (UserSelectTotalTIme());
@@ -127,5 +128,27 @@ function stop(){
         clearInterval(stopId);
         timeDisplay.style.color = 'black'
     },5000)
-    
+    breakTime()
 }
+
+function breakTime(){
+    window.alert()
+    console.log('AAAA')
+    currentSession.innerHTML = 'BREAK'
+    teste()
+
+}
+
+/* to do:
+    adicionar número na "session" para mostrar o tempo total.
+    criar logica para break time e repeat focus
+    ^^, acredito que nao vai ser muito dificil, mas scripts são maldozos
+*/
+
+/*
+Linha 18 até a 34 deve ser separada em uma função especial
+essa função deve ser uma função de especialidade para façar o decremento do tempo. Apenas isso
+Não importa se seja decremento da pausa, ou decremento do tempo de foco
+AddEventListener não deve ter tanta especialidade
+
+*/
