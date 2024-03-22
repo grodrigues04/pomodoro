@@ -13,18 +13,9 @@ let timeText = Number(timeDisplay.textContent);
 let intervalID = null;
 let stopID = null;
 
-
-buttonStart.addEventListener('click',function teste(){
+buttonStart.addEventListener('click',function teste(){ //function "start"
     if(!intervalID){
-        minuts.innerHTML = `${UserSelectTotalTIme()-1}`;
-        minutsNumber = (UserSelectTotalTIme());
-        [secondsRemaing,minutsRemaing] = timeRemaning();
-        (minutsRemaing <= 10) ? fixTimeMinorTen(minuts, minutsRemaing) : null; // operador ternario.
-        console.log(minutsRemaing,secondsRemaing)
-        buttonStart.textContent = 'Pause';
-        seconds.innerHTML = secondsRemaing?secondsRemaing:59;
-        secondsNumber = secondsRemaing?secondsRemaing:59;
-        intervalID = setInterval(updateTime,1000);                   
+        decreaseTime('.timerSection')  //function to only decrease time of main painel                 
     }
     else{
         clearInterval(intervalID);
@@ -40,7 +31,7 @@ buttonReset.addEventListener('click',function(){ //function to "reset"
     intervalID = null;
     stopID = null;
     buttonStart.textContent = 'Start';
-    minuts.innerHTML = UserSelectTotalTIme();
+    minuts.innerHTML = UserSelectTotalTIme('.timerSection');
     seconds.innerHTML = "00";
 })
 
@@ -55,6 +46,17 @@ for(let i=0; i<breakTimeDiv.length;i++){
     });
 }
 
+function decreaseTime(sessionToTake){
+    minuts.innerHTML = `${UserSelectTotalTIme(sessionToTake)-1}`; //minuts, minutsNumber...tem que agora virar parametro
+    minutsNumber = (UserSelectTotalTIme(sessionToTake));
+    [secondsRemaing,minutsRemaing] = timeRemaning();
+    (minutsRemaing <= 10) ? fixTimeMinorTen(minuts, minutsRemaing) : null; // operador ternario.
+    console.log(minutsRemaing,secondsRemaing)
+    buttonStart.textContent = 'Pause';
+    seconds.innerHTML = secondsRemaing?secondsRemaing:59;//tem tempo restante ?se sim, coloca ele. Se n é 59
+    secondsNumber = secondsRemaing?secondsRemaing:59;
+    intervalID = setInterval(updateTime,1000);
+}
 
 function increase(e){
     let total = e.querySelector('.total-timer');
@@ -72,8 +74,8 @@ function decrease(e){
 
     }
 }
-function UserSelectTotalTIme(){ //function to always take the update time selected by user
-    return totalTime = Number(document.querySelector('.timerSection').textContent);
+function UserSelectTotalTIme(painelSession){ //function to always take the update time selected by user
+    return totalTime = Number(document.querySelector(painelSession).textContent);
 }
 
 function fixTimeMinorTen(section, timeRemaning){
@@ -101,7 +103,6 @@ function updateTime(){ //da pra transformar tudo isso aqui em varias funções s
     }
     else{
         if(minutsRemaing===0){
-            console.log('entrou aqui ===0')
             clearInterval(intervalID)
             intervalID = null;
             return stop(intervalID)
@@ -110,7 +111,6 @@ function updateTime(){ //da pra transformar tudo isso aqui em varias funções s
             fixTimeMinorTen(minuts,(minutsRemaing-1))
 
         }else{
-            console.log('entrou aqui-1')
             minuts.innerHTML = minutsRemaing-1;
         }
         seconds.innerHTML = 59;
@@ -131,12 +131,15 @@ function stop(){
     breakTime()
 }
 
-function breakTime(){
+function extraTime(){
     window.alert()
+}
+
+function breakTime(){
+    window.alert('OLA')
     console.log('AAAA')
     currentSession.innerHTML = 'BREAK'
-    teste()
-
+    decreaseTime('.breakSection')
 }
 
 /* to do:
@@ -150,5 +153,14 @@ Linha 18 até a 34 deve ser separada em uma função especial
 essa função deve ser uma função de especialidade para façar o decremento do tempo. Apenas isso
 Não importa se seja decremento da pausa, ou decremento do tempo de foco
 AddEventListener não deve ter tanta especialidade
+
+*/
+
+/*
+Fluxo da dreaseTime
+Decrease time agora vai receber um parametro, indicando que é utilizado para a função
+"UserSelectTotalTIme" para pegar a info atualizada do break ou time
+Assim, utilizamos a função decreaseTime com a especialidade em diminuir o tempo
+do painel principal
 
 */
