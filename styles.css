@@ -120,3 +120,31 @@ section{
 .time-section{
     color: #FFFFFF;
 }
+
+.fristDialog{
+    width: 20%;
+    height: 20%;
+    background-color: #323232;
+    color: antiquewhite;
+    font-size: 25px;
+    border-color: #000000;
+}
+
+.fristDialogContent{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.DialogOK{
+    background: #FFFFFF;
+    outline: none;
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    border-radius: 10px;
+    background-color: #B3BCBB;
+}

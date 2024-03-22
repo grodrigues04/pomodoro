@@ -6,13 +6,17 @@ let buttonReset = document.querySelector('.reset');
 let timeDisplay = document.querySelector('.time-display')
 let minuts = timeDisplay.querySelector('.minuts')
 let seconds = (timeDisplay.querySelector('.seconds'));
-let dot = (timeDisplay.querySelector('.dot').textContent);
+let dot = (timeDisplay.querySelectorAll('.dot').textContent);
 
 let increaseSeconds = -1
 let timeText = Number(timeDisplay.textContent);
 let intervalID = null;
 let stopID = null;
+let dialogOk = document.querySelectorAll('.DialogOK')
 
+
+const modalOne = document.querySelector(".fristDialog")
+const lastModal = document.querySelector(".LastDialog")
 buttonStart.addEventListener('click',function teste(){ //function "start"
     if(!intervalID){
         decreaseTime('.timerSection')  //function to only decrease time of main painel                 
@@ -126,7 +130,7 @@ function stop(){
     setTimeout(function(){
         console.log('parando o pisca pisca')
         clearInterval(stopId);
-        timeDisplay.style.color = 'black'
+        timeDisplay.style.color = 'black';
     },5000)
     breakTime()
 }
@@ -134,13 +138,31 @@ function stop(){
 function extraTime(){
     window.alert()
 }
-
+let extraTimeIDsetInterval = null;
+let timepassed = 1;
+let testTime = document.querySelector('.testTime');
 function breakTime(){
-    window.alert('OLA')
-    console.log('AAAA')
-    currentSession.innerHTML = 'BREAK'
-    decreaseTime('.breakSection')
+    extraTimeIDsetInterval = setInterval(function(){
+        timepassed++
+        timepassed
+    },1000);
+    modalOne.showModal()
 }
+console.log(dialogOk)
+dialogOk[0],dialogOk[1].addEventListener('click',function(e){ //melhorar essa lógica
+    modal = e.target.parentNode.className;
+    console.log(modal)
+    if(modal==="fristDialogContent"){
+        modalOne.close()
+        extraTimeIDsetInterval = null;
+        testTime.innerHTML = timepassed;
+        lastModal.showModal()
+    }
+    else if(modal==="LastModal"){
+        lastModal.close()
+    }
+})
+
 
 /* to do:
     adicionar número na "session" para mostrar o tempo total.
