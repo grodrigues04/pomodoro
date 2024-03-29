@@ -121,7 +121,7 @@ section{
     color: #FFFFFF;
 }
 
-.fristDialog{
+.fristDialog, .LastDialog{
     width: 20%;
     height: 20%;
     background-color: #323232;
@@ -130,7 +130,7 @@ section{
     border-color: #000000;
 }
 
-.fristDialogContent{
+.fristDialogContent, .lastDialogContent{
     display: flex;
     height: 100%;
     width: 100%;
@@ -139,7 +139,7 @@ section{
     align-items: center;
     justify-content: center;
 }
-.DialogOK{
+.DialogOKONE{
     background: #FFFFFF;
     outline: none;
     width: 50px;

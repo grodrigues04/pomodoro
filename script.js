@@ -12,7 +12,7 @@ let increaseSeconds = -1
 let timeText = Number(timeDisplay.textContent);
 let intervalID = null;
 let stopID = null;
-let dialogOk = document.querySelectorAll('.DialogOK')
+let DialogOKONE = document.querySelector('.DialogOKONE')
 
 
 const modalOne = document.querySelector(".fristDialog")
@@ -135,9 +135,6 @@ function stop(){
     breakTime()
 }
 
-function extraTime(){
-    window.alert()
-}
 let extraTimeIDsetInterval = null;
 let timepassed = 1;
 let testTime = document.querySelector('.testTime');
@@ -148,20 +145,17 @@ function breakTime(){
     },1000);
     modalOne.showModal()
 }
-console.log(dialogOk)
-dialogOk[0],dialogOk[1].addEventListener('click',function(e){ //melhorar essa lógica
-    modal = e.target.parentNode.className;
-    console.log(modal)
-    if(modal==="fristDialogContent"){
-        modalOne.close()
-        extraTimeIDsetInterval = null;
-        testTime.innerHTML = timepassed;
-        lastModal.showModal()
+
+DialogOKONE.addEventListener('click',function(e){ //melhorar essa lógica
+    console.log('FECHANDO MODAL')
+    extraMinuts = (timepassed/60).toFixed(0)
+    extraSeconds = (timepassed%60)
+    modalOne.close()
+    extraTimeIDsetInterval = null;
+    testTime.innerHTML = `Tempo extra: ${extraMinuts}m e ${extraSeconds}s`;
+    lastModal.showModal()
     }
-    else if(modal==="LastModal"){
-        lastModal.close()
-    }
-})
+)
 
 
 /* to do:
