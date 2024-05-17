@@ -1,4 +1,4 @@
-<g1>Pomodoro App</h1>
+<h1>Pomodoro App</h1>
 
 Este é um projeto feito em JavaScript, onde podemos aplicar a prática do Pomodoro, para gerenciar o tempo e aumentar a produtividade.
 Para rodar o projeto, basta ter o node instalado corretamente no seu computador, e abrir o arquivo HTML
